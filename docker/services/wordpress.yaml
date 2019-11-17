@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  install:
+    image: mariort/alpine-tools:latest
+    working_dir: /code
+    environment:
+      - WORKDIR=/code
+    volumes:
+      - .:/code
+    command: sh /code/docker/shell/wp_install.sh
+
+networks:
+  default:
+    external:
+      name: bridge

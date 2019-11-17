@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  
+  web:
+    image: mariort/php-nginx:3.0
+    container_name: wordpress
+    volumes:
+      - .:/www
+    ports:
+      - "8080:80"
+    environment: 
+      - XDEBUG_CONFIG
+    env_file:
+      - .env
+      # - .env.local
+    networks:
+      - default
+    command: bash /www/docker/shell/webserver.sh
+
+  database:
+    image: mariadb:10.4
+    restart: always
+    container_name: ${MYSQL_HOST}
+    env_file:
+      - .env
+      # - .env.local
+    networks:
+      - default
+
+networks:
+  default:
+    name: wordpress
