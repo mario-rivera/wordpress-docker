@@ -19,15 +19,16 @@ services:
       - default
     command: bash /www/docker/shell/webserver.sh
 
-  database:
+  mariadb:
     image: mariadb:10.4
     restart: always
-    container_name: ${MYSQL_HOST}
+    container_name: wordpress-db
     volumes:
       - ./wordpress/mariadb:/var/lib/mysql
-    env_file:
-      - .env
-      - .env.local
+    environment:
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=wordpress
     networks:
       - default
 
