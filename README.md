@@ -9,5 +9,5 @@ install
 
 # Start Wordpress
 ```bash
-$ docker-compose up -d web database
+$ docker-compose up -d
 ```

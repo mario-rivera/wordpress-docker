@@ -12,9 +12,6 @@ services:
       - "8080:80"
     environment: 
       - XDEBUG_CONFIG
-    env_file:
-      - .env
-      - .env.local
     networks:
       - default
     command: bash /www/docker/shell/webserver.sh
